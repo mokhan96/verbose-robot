@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Depot</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  
+<body class="container">
+    <nav class="navbar navbar-success">
+    
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">Mo's Final Lab</a>
+      </div>
+
+      <ul class="nav navbar-nav">
+        <li><a href="/">Root</a></li>
+        <li><a href="/store/index">Store</a></li>
+        <li><a href="#">help</a></li>
+        <li><a href="#">about</a></li>
+      </ul>
+      
+      <% if session[:user_id] %>
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Orders', orders_path %></li>
+        <li><%= link_to 'Products', products_path %></li>
+        <li><%= link_to 'Users', users_path %></li>
+      </ul>
+      <%= button_to 'Logout', logout_path, method: :delete, class:"btn btn-xs btn-danger"%>
+      <% end %>
+      
+      </nav>
+    <div>
+    <%= yield %>
+</div>
+  </body>
+</html>
